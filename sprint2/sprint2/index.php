@@ -7,7 +7,13 @@ $page->setBottomSection();
 print $page->getTopSection();
 print "
 <header>	
-  <h1>Home Page Sprint 2</h1>
+	<h1>Home Page Sprint 2</h1>";
+if($_SESSION['isLoggedIn'] == true)
+{
+	print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
+}
+	
+print "	
   <nav>
 	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
