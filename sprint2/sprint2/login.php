@@ -8,7 +8,13 @@ $page->setBottomSection();
 print $page->getTopSection();
 print "
 <header>
-  <h1>Log In</h1>
+  <h1>Log In</h1>";
+if(isset($_SESSION['isLoggedIn'])){
+	if($_SESSION['isLoggedIn'] == true){
+		print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
+	}
+}
+print "
   <nav>
     <a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
@@ -42,18 +48,24 @@ if(isset($_POST['submit']))
 					  WHERE user.id = user2role.userid AND user2role.roleid = role.id AND user.username = '{$safeUser}'";
 			
 			$result = $db->dbCall($query);
-			
-			if((password_verify($sanitizedPass,$result[0]['userpass'])) == 1)
+			if(!count($result) == 0)
 			{
-				$_SESSION['isLoggedIn'] = true;
-				$_SESSION['realName'] = $result[0]['realname'];
-				$_SESSION['role'] = $result[0]['rolename'];
-				header("Location: index.php");
+				if((password_verify($sanitizedPass,$result[0]['userpass'])) == 1)
+				{
+					$_SESSION['isLoggedIn'] = true;
+					$_SESSION['realName'] = $result[0]['realname'];
+					$_SESSION['role'] = $result[0]['rolename'];
+					header("Location: index.php");
+				}
+				else
+				{
+					print "The username or password was incorrect, please try again.";
+				}
 			}
 			else
 			{
-				print "The username or password was incorrect, please try again.";
-			}
+				print "The username or password was incorrect, please try again."
+;			}
 		}
 		else
 		{

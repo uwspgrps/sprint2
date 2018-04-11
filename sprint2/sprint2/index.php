@@ -8,18 +8,30 @@ print $page->getTopSection();
 print "
 <header>	
 	<h1>Home Page Sprint 2</h1>";
-if($_SESSION['isLoggedIn'] == true)
-{
-	print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
+if(isset($_SESSION['isLoggedIn'])){
+	if($_SESSION['isLoggedIn'] == true){
+		print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
+	}
 }
+
 	
 print "	
   <nav>
 	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
-	<a href=booksearch.php>Search</a>
-	<a href=login.php> Log In</a>
+	<a href=booksearch.php>Search</a>";
+if(isset($_SESSION['isLoggedIn'])){
+	if($_SESSION['isLoggedIn'] == true){
+		print "<a href=logoff.php>Logout</a>";
+	}else{
+		print "<a href=login.php> Log In</a>";
+	}
+}else{
+	print "<a href=login.php> Log In</a>";
+}
+	
+print "
   </nav>
 </header>
 <main>
