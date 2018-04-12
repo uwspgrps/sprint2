@@ -16,7 +16,7 @@ if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
 		print "<h2 align='right'>Welcome " . $_SESSION['realName'] . "!</h2>";
 		print "<h2 align='right'><a href=userlog.php>User Log</a></h2>";
-		print "<nav>";
+		
 		
 		
 	}
@@ -24,11 +24,12 @@ if(isset($_SESSION['isLoggedIn'])){
 
 	
 print "	
- 
+	<nav>
 	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
 	<a href=booksearch.php>Search</a>";
+	 
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
 		
@@ -40,7 +41,7 @@ if(isset($_SESSION['isLoggedIn'])){
 }else{
 	print "<a href=login.php> Log In</a>";
 }
-	
+
 print "
   </nav>
 </header>
