@@ -1,4 +1,8 @@
 <?php
+// Start the session
+session_start();
+?>
+<?php
 require_once("templates/Template.php");
 $page = new Template("Index");
 $page->setHeadSection("<link rel='stylesheet' href='css/prettylab.css'>");
@@ -10,24 +14,26 @@ print "
 	<h1>Home Page Sprint 2</h1>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
-		print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
+		print "<h2 align='right'>Welcome " . $_SESSION['realName'] . "!</h2>";
+		print "<h2 align='right'><a href=userlog.php>User Log</a></h2>";
+		print "<nav>";
+		
+		
 	}
 }
 
 	
 print "	
-  <nav>
+ 
 	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
 	<a href=booksearch.php>Search</a>";
-	
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
-		print "<a href=userlog.php>User Database</a>";  // should print this when logged in so you can access DB page. 
-														// just need to verify admin log in, but i cant get any session stuff to work
-														// if you just type in cnmtsrv2.uwsp.edu/~yourpath/userlog.php it pulls data fine though
+		
 		print "<a href=logoff.php>Logout</a>";
+		
 	}else{
 		print "<a href=login.php> Log In</a>";
 	}
@@ -78,7 +84,7 @@ print "
     </div>
   </aside>
   </main>
-  <footer>Sprint 1 Ken Lucas Peter</footer>
+  <footer>Sprint 2 Ken Lucas Peter</footer>
   ";
 print $page->getBottomSection();
 ?>
