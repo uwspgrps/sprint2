@@ -21,6 +21,7 @@ print "
 	<a href=booksearch.php>Search</a>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
+		print "<a href=userlog.php>User Database</a>";
 		print "<a href=logoff.php>Logout</a>";
 	}else{
 		print "<a href=login.php> Log In</a>";
@@ -68,6 +69,6 @@ print "
     </div>
   </aside>
   </main>
-  <footer>Sprint 1 Ken Lucas Peter</footer>";
+  <footer>Sprint 2 Ken Lucas Peter</footer>";
  print $page->getBottomSection();
 ?>

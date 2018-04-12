@@ -21,8 +21,12 @@ print "
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
 	<a href=booksearch.php>Search</a>";
+	
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
+		print "<a href=userlog.php>User Database</a>";  // should print this when logged in so you can access DB page. 
+														// just need to verify admin log in, but i cant get any session stuff to work
+														// if you just type in cnmtsrv2.uwsp.edu/~yourpath/userlog.php it pulls data fine though
 		print "<a href=logoff.php>Logout</a>";
 	}else{
 		print "<a href=login.php> Log In</a>";

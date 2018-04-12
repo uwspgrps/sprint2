@@ -41,7 +41,7 @@ print "
     </article>
   </section>
   </main>
-	<footer>Sprint 1 Ken Lucas Peter</footer>
+	<footer>Sprint 2 Ken Lucas Peter</footer>
 	";
 print $page->getBottomSection();
 ?>

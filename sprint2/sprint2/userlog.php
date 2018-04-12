@@ -8,7 +8,7 @@ $page->setBottomSection();
 print $page->getTopSection();
 print "
 <header>	
-  <h1>Book Search Result</h1>";
+  <h1>User Database</h1>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
 		print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
@@ -22,6 +22,7 @@ print "
 	<a href=booksearch.php>Search</a>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
+		print "<a href=userlog.php>User Database</a>";
 		print "<a href=logoff.php>Logout</a>";
 	}else{
 		print "<a href=login.php> Log In</a>";
@@ -63,31 +64,35 @@ if (!$db->getConnStatus()) {
 }
 //get POST input and assign to variable here
 //sanitize input
-if(isset($_POST['name'])){
+/*if(isset($_POST['name'])){
 	if(!empty($_POST['name'])){
 		$link = $db->returnDB();
 		$input = $_POST['name'];
-		$safeInput = mysqli_real_escape_string($link,$input);
-		$query = "SELECT booktitle, isbn, author FROM bookinfo WHERE booktitle LIKE '%{$safeInput}%' OR isbn LIKE '%{$safeInput}%' OR author LIKE '%{$safeInput}%'";
+		$safeInput = mysqli_real_escape_string($link,$input);*/
+		$query = "SELECT * FROM contact_us";
 		$result = $db->dbCall($query);
 		if(!empty($result)){
 			$position=0;
 			print "<table style='width:50%'>";
 			print "<tr>";
-			print "<th>Book Title</th>
-				  <th>ISBN</th>
-				  <th>Author</th>";
+			print "<th>First Name</th>
+				  <th>Last Name</th>
+				  <th>Phone</th>
+				  <th>Email</th>";
 			print "</tr>";
 			while($position < count($result)){
 				print "<tr>";
 				print "<td>";
-				print $result[$position]['booktitle'] . " ";
+				print $result[$position]['firstName'] . " ";
 				print "</td>";
 				print "<td>";
-				print $result[$position]['isbn'] . " ";
+				print $result[$position]['lastName'] . " ";
 				print "</td>";
 				print "<td>";
-				print $result[$position]['author'] . " ";
+				print $result[$position]['phoneNumber'] . " ";
+				print "</td>";
+				print "<td>";
+				print $result[$position]['email'] . " ";
 				print "</td>";
 				print "</tr>";
 				$position++;
@@ -95,16 +100,16 @@ if(isset($_POST['name'])){
 			print "</table>";		
 		}	
 		else{
-			print "Can not find search result.";
-		}
+			print "User Table not found";
+		}/*
 	}else{
 		print "You must fill in a search term";
 	}
 }else{
 	print "Nothing was put in the search bar";
-}
+}*/
 print "</div></main>
-	<footer>Sprint 2 Ken Lucas Peter</footer>
+	<footer>Sprint 1 Ken Lucas Peter</footer>
 	";
 print $page->getBottomSection();
 ?>

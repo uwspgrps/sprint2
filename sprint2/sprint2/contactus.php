@@ -10,7 +10,7 @@ $page->setTopSection();
 $page->setBottomSection();
 print $page->getTopSection();
 print"<header>	
-  <h1>Contact Us Sprint 1</h1>";
+  <h1>Contact Us Sprint 2</h1>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
 		print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
@@ -24,6 +24,7 @@ print "
 	<a href=booksearch.php>Search</a>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
+		print "<a href=userlog.php>User Database</a>";
 		print "<a href=logoff.php>Logout</a>";
 	}else{
 		print "<a href=login.php> Log In</a>";
@@ -132,7 +133,7 @@ print "
     </div>
   </aside>
   </main>
-<footer>Sprint 1 Ken Lucas Peter</footer>
+<footer>Sprint 2 Ken Lucas Peter</footer>
 ";
 print $page->getBottomSection();
 ?>
