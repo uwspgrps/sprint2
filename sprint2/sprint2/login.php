@@ -11,16 +11,16 @@ print "
   <h1>Log In</h1>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
-		print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
+		print "<h2 align='right'>Welcome " . $_SESSION['realName'] . "</h2>";
 	}
 }
 print "
   <nav>
-    <a href=index.php>Home</a>
-    <a href=asgnabout.php>About</a>
-    <a href=contactus.php>Contact</a>
-	<a href=booksearch.php>Search</a>
-	<a href=login.php> Log In</a>
+	<a href=\"index.php\">Home</a>
+    <a href=\"asgnabout.php\">About</a>
+    <a href=\"contactus.php\">Contact</a>
+	<a href=\"booksearch.php\">Search</a>  
+	<a href=\"login.php\">Log In</a>
   </nav>
 </header>";
 
@@ -85,10 +85,15 @@ print
     <article>
       <h2>Log into your account</h2>
 	<form method='POST' action='login.php'>
-	Enter your username:  <input type='text' name='name' id='name' ><br />
-	Enter your password:  <input type='test' name='passwrd' id='passwrd' ><br />
-	<br />
-	<input type='submit' name='submit' value='Submit'>
+	<div class='input'>
+	Username:  <input type='text' name='name' id='name' >
+	</div>
+	<div class='input'>
+	Password:  <input type='password' name='passwrd' id='passwrd' >
+	</div>	
+	<div class='input'>
+	<input type='submit' name='submit' value='Log in'>
+	</div>
 	</form>
       <p></p>
       <p></p>

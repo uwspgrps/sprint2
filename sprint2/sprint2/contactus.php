@@ -13,24 +13,26 @@ print"<header>
   <h1>Contact Us Sprint 2</h1>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
-		print "<h2>Welcome " . $_SESSION['realName'] . "!</h2>";
+		print "<h2 align='right'>Welcome " . $_SESSION['realName'] . "</h2>";
 	}
 }
 print "
   <nav>
-	<a href=index.php>Home</a>
-    <a href=asgnabout.php>About</a>
-    <a href=contactus.php>Contact</a>
-	<a href=booksearch.php>Search</a>";
+	<a href=\"index.php\">Home</a>
+    <a href=\"asgnabout.php\">About</a>
+    <a href=\"contactus.php\">Contact</a>
+	<a href=\"booksearch.php\">Search</a>";
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
-		print "<a href=userlog.php>User Database</a>";
-		print "<a href=logoff.php>Logout</a>";
+		if($_SESSION['role'] == 'administrator'){
+			print "<a href=\"contactdata.php\">Contact Data</a>";
+		}
+		print "<a href=\"logoff.php\">Logout</a>";
 	}else{
-		print "<a href=login.php> Log In</a>";
+		print "<a href=\"login.php\"> Log In</a>";
 	}
 }else{
-	print "<a href=login.php> Log In</a>";
+	print "<a href=\"login.php\"> Log In</a>";
 }
 
 print "
@@ -45,27 +47,32 @@ if (!$db->getConnStatus()) {
 
 if(isset($_POST['submit'])){
 	$link = $db->returnDB();
-	$firstName = isset($_POST['firstName']) ? $_POST['firstName'] : '';
-	$lastName = isset($_POST['lastName']) ? $_POST['lastName'] : '';
-	$phoneNumber = isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '';
-	$email = isset($_POST['email']) ? $_POST['email'] : '';
-	$feedback = isset($_POST['feedback']) ? $_POST['feedback'] : '';
+	$postArray = $db->dbEsc($_POST);	
+	//var_dump($postArray);
+	//die();
+	
+	$firstName = isset($postArray['firstName']) ? $postArray['firstName'] : '';
+	$lastName = isset($postArray['lastName']) ? $postArray['lastName'] : '';
+	$phoneNumber = isset($postArray['phoneNumber']) ? $postArray['phoneNumber'] : '';
+	$email = isset($postArray['email']) ? $postArray['email'] : '';
+	$feedback = isset($postArray['feedback']) ? $postArray['feedback'] : '';
 
+	$validEmail;
 	$sanitizedEmail = filter_var($email,FILTER_SANITIZE_EMAIL);	
 	if (filter_var($sanitizedEmail,FILTER_VALIDATE_EMAIL)){
 		$validEmail = $sanitizedEmail;
 	}
 
-    $safeEmail = mysqli_real_escape_string($link,$validEmail); 
-    $safeFirstName = mysqli_real_escape_string($link,$firstName);
-    $safeLastName = mysqli_real_escape_string($link,$lastName);
-    $safePhoneNumberName = mysqli_real_escape_string($link,$phoneNumber);            
-    $safeFeedback = mysqli_real_escape_string($link,$feedback);
+    // $safeEmail = mysqli_real_escape_string($link,$validEmail); 
+    // $safeFirstName = mysqli_real_escape_string($link,$firstName);
+    // $safeLastName = mysqli_real_escape_string($link,$lastName);
+    // $safePhoneNumberName = mysqli_real_escape_string($link,$phoneNumber);            
+    // $safeFeedback = mysqli_real_escape_string($link,$feedback);
 	
-	if(($safeFirstName !== '') && ($safeLastName !== '') && ($safePhoneNumberName !== '') && ($safeEmail !== '') && ($safeFeedback !== '')){
+	if(($firstName !== '') && ($lastName !== '') && ($phoneNumber !== '') && ($validEmail !== '') && ($feedback !== '')){
 		$sqlInsert = "INSERT INTO contact_us (insertTime, firstName, lastName, phoneNumber, email, feedback)
 						VALUES
-						(now(), '$safeFirstName', '$safeLastName', '$safePhoneNumberName', '$safeEmail', '$safeFeedback')";
+						(now(), '$firstName', '$lastName', '$phoneNumber', '$validEmail', '$feedback')";
 		$insertResult = mysqli_query($link,$sqlInsert);		
 	}
 	

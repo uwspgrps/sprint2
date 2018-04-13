@@ -1,7 +1,7 @@
 <?php
 require_once("templates/Template.php");
 require_once("config/DB.class.php");
-$page = new Template("Contact Us");
+$page = new Template("My Info");
 $page->setHeadSection("<link rel='stylesheet' href='css/prettylab.css'>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js'></script>
@@ -12,10 +12,10 @@ print $page->getTopSection();
 print"<header>	
   <h1>Please enter your contact information</h1>
   <nav>
-	<a href=index.php>Home</a>
-    <a href=asgnabout.php>About</a>
-    <a href=contactus.php>Contact</a>
-	<a href=booksearch.php>Search</a>
+	<a href=\"index.php\">Home</a>
+    <a href=\"asgnabout.php\">About</a>
+    <a href=\"contactus.php\">Contact</a>
+	<a href=\"booksearch.php\">Search</a>
   </nav>
 </header>";
 
