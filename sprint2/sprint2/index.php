@@ -1,8 +1,4 @@
 <?php
-// Start the session
-session_start();
-?>
-<?php
 require_once("templates/Template.php");
 $page = new Template("Index");
 $page->setHeadSection("<link rel='stylesheet' href='css/prettylab.css'>");
