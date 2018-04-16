@@ -48,8 +48,6 @@ if (!$db->getConnStatus()) {
 if(isset($_POST['submit'])){
 	$link = $db->returnDB();
 	$postArray = $db->dbEsc($_POST);	
-	//var_dump($postArray);
-	//die();
 	
 	$firstName = isset($postArray['firstName']) ? $postArray['firstName'] : '';
 	$lastName = isset($postArray['lastName']) ? $postArray['lastName'] : '';
@@ -62,12 +60,6 @@ if(isset($_POST['submit'])){
 	if (filter_var($sanitizedEmail,FILTER_VALIDATE_EMAIL)){
 		$validEmail = $sanitizedEmail;
 	}
-
-    // $safeEmail = mysqli_real_escape_string($link,$validEmail); 
-    // $safeFirstName = mysqli_real_escape_string($link,$firstName);
-    // $safeLastName = mysqli_real_escape_string($link,$lastName);
-    // $safePhoneNumberName = mysqli_real_escape_string($link,$phoneNumber);            
-    // $safeFeedback = mysqli_real_escape_string($link,$feedback);
 	
 	if(($firstName !== '') && ($lastName !== '') && ($phoneNumber !== '') && ($validEmail !== '') && ($feedback !== '')){
 		$sqlInsert = "INSERT INTO contact_us (insertTime, firstName, lastName, phoneNumber, email, feedback)
@@ -81,7 +73,7 @@ if(isset($_POST['submit'])){
         exit();
     }  
     else{
-        header('Location: '.$_SERVER['REQUEST_URI']);
+        print "Invalid form input.  Please check your input for errors. \n";
     }
 }
 
@@ -101,7 +93,7 @@ print "
         </div>
 	    <div class='input'>
             <label class='col-md-3 col-form-label'>Phone Number:</label>
-            <input type='text' name='phoneNumber' id='phoneNumber' required='required' value='' size='25' maxlength='12'/>
+            <input type='text' name='phoneNumber' id='phoneNumber' required='required' value='' size='25' minlength='10' maxlength='12'/>
         </div>                       
         <div class='input'>
             <label class='col-md-3 col-form-label'>Email:</label>
