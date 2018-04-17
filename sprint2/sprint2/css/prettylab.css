@@ -5,6 +5,8 @@
   -moz-osx-font-smoothing: grayscale;
   font-kerning: auto;
 }
+
+
 html {
   line-height: 1.4;
   font-weight: 400;
@@ -12,32 +14,38 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+
 body {
   background: #D3D3D3; 
   margin: 0;
   font-family: sans-serif;
 }
+
 header {
   color: white;
   padding: 1em;
   background: #A9A9A9; 
   text-align: center;
 }
+
 header h1 {
   margin: 0;
 }
+
 header nav {
-  width: 50%;
+  width: 40%;
 }
+
 header nav a {
   display: inline;
-  padding: .75em;
+  padding: .25em;
   color: white;
   font-weight: 600;
   text-transform: lowercase;
-  width: 15%;
+  width: 20%;
   float: left;
 }
+
 a {
   outline: none;
   text-decoration: none;
@@ -55,25 +63,31 @@ footer {
   text-align: center;
   font-weight: bolder;
 }
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 .5em 0;
   letter-spacing: -.02em;
 }
+
 h2 {
   font-size: 20pt;
   font-weight: 400;
   color: #D3D3D3; 
 }
+
 p {
   margin: 0;
 }
+
 p + p {
   margin-top: .75em;
 }
+
 div {
   padding: 1.5em;
   background: white;
 }
+
 div h3 {
   color: #A9A9A9; 
 }
