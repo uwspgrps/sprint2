@@ -84,7 +84,7 @@ print "
 		print "User Table not found";
 	}
 	print "</div></main>
-		<footer>Sprint 1 Ken Lucas Peter</footer>
+		<footer>Sprint 2 Ken Lucas Peter</footer>
 		";
 	print $page->getBottomSection();
 }else{
