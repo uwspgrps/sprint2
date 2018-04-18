@@ -14,14 +14,15 @@ if(isset($_SESSION['isLoggedIn'])){
 		print "<h2 align='right'>Welcome " . $_SESSION['realName'] . "</h2>";
 	}
 }
-print "
-  <nav>
-	<a href=\"index.php\">Home</a>
-    <a href=\"asgnabout.php\">About</a>
-    <a href=\"contactus.php\">Contact</a>
-	<a href=\"booksearch.php\">Search</a>  
-	<a href=\"login.php\">Log In</a>
-  </nav>
+
+print "	
+	<nav>
+		<a href=\"login.php\">Log In</a>
+		<a href=\"booksearch.php\">Search</a>
+		<a href=\"contactus.php\">Contact</a>
+		<a href=\"asgnabout.php\">About</a>
+		<a href=\"index.php\">Home</a>	
+	</nav>
 </header>";
 
 if(isset($_POST['submit']))

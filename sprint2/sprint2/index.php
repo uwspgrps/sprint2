@@ -16,17 +16,20 @@ if(isset($_SESSION['isLoggedIn'])){
 
 	
 print "	
-	<nav>
-	<a href=\"index.php\">Home</a>
-    <a href=\"asgnabout.php\">About</a>
-    <a href=\"contactus.php\">Contact</a>
-	<a href=\"booksearch.php\">Search</a>";
+	<nav>";
+if(isset($_SESSION['isLoggedIn'])){	
+	if(($_SESSION['isLoggedIn'] == true) && ($_SESSION['role'] == 'administrator')){
+			print "<a href=\"contactdata.php\">Contact Data</a>";
+	}
+}
+print "		
+	<a href=\"booksearch.php\">Search</a>
+	<a href=\"contactus.php\">Contact</a>
+	<a href=\"asgnabout.php\">About</a>
+	<a href=\"index.php\">Home</a>";
 	 
 if(isset($_SESSION['isLoggedIn'])){
 	if($_SESSION['isLoggedIn'] == true){
-		if($_SESSION['role'] == 'administrator'){
-			print "<a href=\"contactdata.php\">Contact Data</a>";
-		}
 		print "<a href=\"logoff.php\">Logout</a>";		
 	}else{
 		print "<a href=\"login.php\"> Log In</a>";

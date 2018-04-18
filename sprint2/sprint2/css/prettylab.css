@@ -6,14 +6,12 @@
   font-kerning: auto;
 }
 
-
 html {
   line-height: 1.4;
   font-weight: 400;
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
 }
-
 
 body {
   background: #D3D3D3; 
@@ -33,7 +31,7 @@ header h1 {
 }
 
 header nav {
-  width: 40%;
+  width: 41%;
 }
 
 header nav a {
@@ -42,8 +40,8 @@ header nav a {
   color: white;
   font-weight: 600;
   text-transform: lowercase;
-  width: 20%;
-  float: left;
+  width: 15%;
+  float: right;
 }
 
 a {
@@ -91,52 +89,65 @@ div {
 div h3 {
   color: #A9A9A9; 
 }
+
 div p {
   color: #D3D3D3; 
 }
+
 table {
 	border-collapse: collapse;
 }
+
 table, th, td {
 	border: 1px solid black;
 }
+
 th, td {
 	text-align: left;
 }
+
 main {
   background: gainsboro; 
   padding-bottom: 1.5em;
 }
+
 main section,
 main aside {
   padding: 1.5em;
   padding-bottom: 0;
 }
+
 main article {
   padding: 1.5em;
   background: white;
   border-radius: 3px;
 }
+
 main article p {
   color: indianred;
   line-height: 1.5;
 }
+
 .capsule {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid lightslategray;
 }
+
 .capsule  + .capsule {
   border-top: none;
 }
+
 .capsule:first-of-type {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+
 .capsule:last-of-type {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 @media (min-width: 800px) {
   header,
   main {
@@ -170,6 +181,7 @@ textarea {
 .input{
 	padding: 5px 5px;
 }
+
 .tdiv{
     align-content: center;
 }
